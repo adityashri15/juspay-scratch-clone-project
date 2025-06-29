@@ -1,70 +1,91 @@
-# Getting Started with Create React App
+# 🐱 Scratch Clone Project (ReactJS)
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A React-based clone of the popular MIT Scratch app, designed to help users create interactive stories, animations, and games using drag-and-drop coding blocks.
 
-## Available Scripts
+### 🔗 Live Demo
+👉 [View Project on Netlify](https://incandescent-strudel-78ef26.netlify.app/)
 
-In the project directory, you can run:
+---
 
-### `npm start`
+## ✨ Features
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- 🧩 Drag-and-drop visual coding interface
+- 🐢🐇 Multiple sprites (e.g., Cat, Turtle, Rabbit) with independent behaviors
+- 🔄 Sprite action swapping when sprites collide
+- 🎨 Dynamic UI with a clean, intuitive layout
+- 📦 Modular component structure (Sidebar, Preview Area, Code Blocks)
+- 💬 Motion and Looks blocks implemented (step, turn, say, etc.)
+- 🚀 Fully responsive & interactive preview section
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+---
 
-### `npm test`
+## 📁 Folder Structure
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+```
+src/
+├── components/
+│   ├── layout/         # UI layout components (Sidebar, MidArea, PreviewArea)
+│   ├── visual/         # Sprite and visual-related components
+│   └── blocks/         # Code block UI and logic
+├── styles/             # CSS files
+├── App.js
+└── index.js
+```
 
-### `npm run build`
+---
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## 🛠️ Tech Stack
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+- **React.js** (Vite or Create React App)
+- **HTML5 & CSS3**
+- **JavaScript (ES6+)**
+- **Netlify** (for deployment)
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+---
 
-### `npm run eject`
+## 🚀 Getting Started
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+### Clone the repo
+```bash
+git clone https://github.com/adityashri15/juspay-scratch-clone-project.git
+cd juspay-scratch-clone-project
+```
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### Install dependencies
+```bash
+npm install
+```
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+### Run locally
+```bash
+npm start
+```
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+---
 
-## Learn More
+## 🧠 Future Improvements
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+- Add sound blocks and costume changes
+- Save and export user-created projects
+- Import new sprites
+- Cloud save via Firebase or Supabase
+- Mobile drag-and-drop support
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+---
 
-### Code Splitting
+## 📸 Screenshots
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+> _Add a few screenshots here from your app to visually show how it works._
 
-### Analyzing the Bundle Size
+---
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+## 👨‍💻 Author
 
-### Making a Progressive Web App
+**Aditya Shrivastwa**  
+🔗 [GitHub Profile](https://github.com/adityashri15)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+---
 
-### Advanced Configuration
+## 📝 License
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+This project is licensed under the [MIT License](LICENSE).
