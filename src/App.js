@@ -1,11 +1,8 @@
-import React, { useState, useEffect, useRef, useCallback, useMemo } from 'react'; // Import useMemo
+import React, { useState, useEffect, useRef, useCallback, useMemo } from 'react'; 
 import { Play, Pause, RotateCw, RotateCcw, MapPin, MessageCircle, GripVertical, ArrowRight, Compass, Shuffle } from 'lucide-react';
 
-// In a typical React project, an external CSS file like index.css or App.css would be imported here:
-// import './index.css'; 
-// Or a specific component's CSS: import './PetProgrammersApp.css';
 
-// Helper function to find an action and its parent/path in a nested structure
+
 const findActionAndParent = (actions, targetId, parent = null, path = []) => {
   for (let i = 0; i < actions.length; i++) {
     const action = actions[i];
@@ -14,7 +11,7 @@ const findActionAndParent = (actions, targetId, parent = null, path = []) => {
       return { action, parent, path: currentPath, index: i };
     }
     if (action.children && action.children.length > 0) {
-      // Changed targetId to action.id for the recursive call
+      
       const found = findActionAndParent(action.children, targetId, action, currentPath); 
       if (found) return found;
     }
@@ -22,7 +19,7 @@ const findActionAndParent = (actions, targetId, parent = null, path = []) => {
   return null;
 };
 
-// Helper function to remove an action from a nested structure
+
 const removeActionFromStructure = (actions, actionId) => {
   return actions.filter(action => {
     if (action.id === actionId) {
@@ -50,21 +47,21 @@ const PetProgrammersApp = () => {
   
   const [pets, setPets] = useState({
     cat: {
-      x: 250, // Centered default position for single pet focus
-      y: 150, // Centered default position for single pet focus
-      angle: 90, // Default direction: right
+      x: 250, 
+      y: 150, 
+      angle: 90, 
       actions: [],
       executionStack: [],
       message: '',
       messageTime: 0
     },
-    // Other pets remain for future multi-pet support if needed, but UI is simplified
+    
     dog: { x: 300, y: 200, angle: 180, actions: [], executionStack: [], message: '', messageTime: 0 },
     rabbit: { x: 200, y: 150, angle: 90, actions: [], executionStack: [], message: '', messageTime: 0 },
     bird: { x: 400, y: 100, angle: 270, actions: [], executionStack: [], message: '', messageTime: 0 }
   });
 
-  // Memoize petOptions to ensure a stable reference across renders
+  
   const petOptions = useMemo(() => [
     { id: 'cat', name: 'Cat', emoji: '🐱', color: '#ff6b6b' },
     { id: 'dog', name: 'Dog', emoji: '🐶', color: '#4ecdc4' },
@@ -72,7 +69,7 @@ const PetProgrammersApp = () => {
     { id: 'bird', name: 'Bird', emoji: '🐦', color: '#f3d250' }
   ], []); // Empty dependency array means it's created once
 
-  // Memoize actionTypes to ensure a stable reference across renders
+  
   const actionTypes = useMemo(() => [
     // Motion Category
     { 
@@ -168,7 +165,7 @@ const PetProgrammersApp = () => {
       isContainer: true,
       inputConfig: { field: 'times', type: 'number', defaultValue: 4 } 
     }
-  ], []); // Empty dependency array means it's created once
+  ], []); 
 
   // Function to add a new action to the selected pet's program
   const addAction = (actionType, targetPath = [], targetIndex = 0) => {
@@ -220,7 +217,7 @@ const PetProgrammersApp = () => {
     });
   };
 
-  // Function to remove an action from the selected pet's program (including nested actions)
+  // Function to remove an action from the selected pet's program
   const removeAction = (actionId) => {
     if (!selectedPet) return;
     setPets(prev => {
@@ -230,7 +227,7 @@ const PetProgrammersApp = () => {
     });
   };
 
-  // Function to move/reorder an action in the program (including nested actions)
+  // Function to move/reorder an action in the program 
   const moveAction = useCallback((sourceId, targetPath, targetIndex) => {
     if (!selectedPet || sourceId === null) return;
   
@@ -307,7 +304,7 @@ const PetProgrammersApp = () => {
     }));
   };
 
-  // Function to toggle whether a pet is active/visible on the stage
+  // Function to toggle whether a pet is active
   const togglePet = (petId) => {
     setActivePets(prevActive => {
       const newActive = prevActive.includes(petId)
@@ -544,7 +541,7 @@ const PetProgrammersApp = () => {
     });
   };
 
-  // Function to reset pets to their initial positions and clear messages/current actions
+  // Function to reset pets to their initial positions 
   const resetPets = () => {
     setIsRunning(false);
     setPets(prev => {
@@ -628,7 +625,7 @@ const PetProgrammersApp = () => {
   
   // Drag start handler for action blocks from the palette
   const handleActionBlockDragStart = (e, actionId) => {
-    e.dataTransfer.setData('actionType', actionId); // Renamed to actionType
+    e.dataTransfer.setData('actionType', actionId); 
     e.dataTransfer.setData('source', 'actionBlock');
     e.currentTarget.classList.add('scale-105', 'shadow-lg'); // Visual feedback on drag start
   };
@@ -637,22 +634,22 @@ const PetProgrammersApp = () => {
   const handleProgramItemDragStart = (e, actionId, path) => {
     setDraggedActionId(actionId);
     e.dataTransfer.setData('sourceId', actionId);
-    e.dataTransfer.setData('sourcePath', JSON.stringify(path)); // Pass path as string
+    e.dataTransfer.setData('sourcePath', JSON.stringify(path)); 
     e.dataTransfer.setData('source', 'programItem');
     e.dataTransfer.effectAllowed = 'move';
     e.currentTarget.classList.add('scale-105', 'shadow-lg'); // Visual feedback on drag start
   };
 
-  // Drag over handler for program list items (to show drop target)
+  // Drag over handler for program list items 
   const handleDragOverProgram = (e, targetPath, targetIndex, dropTargetType = 'sibling') => {
     e.preventDefault();
     setDragOverTarget({ path: targetPath, index: targetIndex, type: dropTargetType });
   };
 
-  // Drop handler for program list items (reordering or adding from palette)
+  // Drop handler for program list items
   const handleDropOnProgram = (e, targetPath, targetIndex, dropType = 'sibling') => {
     e.preventDefault();
-    setDragOverTarget(null); // Clear drag over highlight
+    setDragOverTarget(null); 
 
     const source = e.dataTransfer.getData('source');
     
@@ -670,24 +667,23 @@ const PetProgrammersApp = () => {
     } else if (source === 'actionBlock') {
       const actionType = e.dataTransfer.getData('actionType');
 
-      // If dropType is 'child', targetPath already points to the parent, targetIndex is 0 (first child)
       if (dropType === 'child') {
-        addAction(actionType, targetPath, 0); // Add as first child of the container
+        addAction(actionType, targetPath, 0); 
       } else {
-        addAction(actionType, targetPath, targetIndex); // Add as a sibling at the given index
+        addAction(actionType, targetPath, targetIndex); 
       }
     }
     setDraggedActionId(null);
   };
   
-  // Drop handler for the overall program container (adds to end of top-level list)
+  // Drop handler for the overall program container 
   const handleDropOnContainer = (e) => {
     e.preventDefault();
     setDragOverTarget(null); // Clear drag over highlight
     const source = e.dataTransfer.getData('source');
     if (source === 'actionBlock') {
         const actionType = e.dataTransfer.getData('actionType');
-        addAction(actionType, [], pets[selectedPet].actions.length); // Add to the end of the top-level list
+        addAction(actionType, [], pets[selectedPet].actions.length); 
     }
   };
 
@@ -771,7 +767,7 @@ const PetProgrammersApp = () => {
       const isDragOverChild = dragOverTarget && dragOverTarget.type === 'child' && JSON.stringify(dragOverTarget.path) === JSON.stringify(currentPath) && actionType.isContainer;
 
       const renderInputField = (inputConfig, currentActionValue) => {
-        // Handle different input types (number, coords, text_duration)
+        // Handle different input types 
         if (Array.isArray(inputConfig)) {
           return (
             <span className="flex items-center gap-1">
